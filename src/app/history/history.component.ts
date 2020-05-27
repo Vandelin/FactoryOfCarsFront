@@ -8,6 +8,7 @@ export class Car{
   transition: string;
   tires: string;
   paint: string;
+  time: string;
 }
 
 @Component({
@@ -20,7 +21,7 @@ export class HistoryComponent implements OnInit {
   dataSource: MatTableDataSource<Car>;
 
   displayedColumns: string[] = ['Model', 'Engine', 'Transition',
-   'Tires', 'Paint',  'Operations'];
+   'Tires', 'Paint', 'Time', 'Operations'];
 
   constructor() {
     this.car.model = 'Volvo';
@@ -28,6 +29,7 @@ export class HistoryComponent implements OnInit {
     this.car.transition = 'Opel Automatic - 6 gears';
     this.car.tires = 'Debica';
     this.car.paint = 'red';
+    this.car.time = '11 days';
     this.dataSource = new MatTableDataSource();
     this.dataSource.data.push(this.car);
   }

@@ -1,6 +1,6 @@
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="Model">
-        <mat-header-cell *matHeaderCellDef > Id. </mat-header-cell>
+        <mat-header-cell *matHeaderCellDef > Model </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
     </ng-container>
 
@@ -22,6 +22,11 @@
     <ng-container matColumnDef="Paint">
             <mat-header-cell *matHeaderCellDef> Paint </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.paint}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Time">
+        <mat-header-cell *matHeaderCellDef> Time Elapsed </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Operations">
