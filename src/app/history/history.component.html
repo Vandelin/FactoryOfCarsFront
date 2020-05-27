@@ -1,0 +1,35 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="Model">
+        <mat-header-cell *matHeaderCellDef > Id. </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.model}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Engine">
+        <mat-header-cell *matHeaderCellDef > Brand </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.engine}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Transition">
+        <mat-header-cell *matHeaderCellDef > Transition </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.transition}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Tires">
+        <mat-header-cell *matHeaderCellDef> Tires </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.tires}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Paint">
+            <mat-header-cell *matHeaderCellDef> Paint </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.paint}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Operations">
+        <mat-header-cell *matHeaderCellDef > Continue operating </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click) = "continue()">Continue</button> </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+    
