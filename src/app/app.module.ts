@@ -9,6 +9,12 @@ import { MaterialModule } from './material.module';
 import { NewFormComponent, OrderMaterialsComponent } from './new-form/new-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoryComponent } from './history/history.component';
+import { Models } from './models/models';
+import { Tires } from './models/tires';
+import { Transmission } from './models/transmission';
+import { Order } from './models/order';
+import { Paint } from './models/paint';
+import { Engines } from './models/engines';
 
 @NgModule({
   declarations: [

@@ -2,6 +2,12 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Models } from '../models/models';
+import { Engines } from '../models/engines';
+import { Order } from '../models/order';
+import { Paint } from '../models/paint';
+import { Transmission } from '../models/transmission';
+import { Tires } from '../models/tires';
 
 export interface Material {
   material: string;
@@ -16,6 +22,14 @@ export interface Material {
 })
 export class NewFormComponent implements OnInit {
 
+  model: Models;
+  engines: Engines;
+  order: Order;
+  paint: Paint;
+  transmission: Transmission;
+  tires: Tires;
+  price = 0;
+
   constructor(public dialog: MatDialog) {}
 
 
@@ -28,6 +42,9 @@ export class NewFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.form.get('model').valueChanges.subscribe(val => {
+      this.price += 1;
+    });
   }
 
 
