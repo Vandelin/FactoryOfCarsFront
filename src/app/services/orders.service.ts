@@ -11,7 +11,6 @@ export class OrdersService {
 
     post(order: Order) {
         // tslint:disable-next-line:max-line-length
-        this.http.get(this.url.url + '/confirm').subscribe();
         return this.http.post<Order>(this.url.url + `/order`, order);
     }
 

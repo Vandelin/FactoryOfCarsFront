@@ -36,5 +36,6 @@ export class HistoryComponent implements OnInit {
   submit(){
     this.paintService.clearData();
     this.dataSource = this.paintService.getData();
+    this.paintService.getCos();
   }
 }

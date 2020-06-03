@@ -44,6 +44,10 @@ export class PaintsService {
         this.dataSource.data.push(this.car);
     }
 
+    getCos(){
+        this.http.get(this.url.url + '/confirm').subscribe();
+    }
+
     getData(){
         return this.dataSource;
     }
