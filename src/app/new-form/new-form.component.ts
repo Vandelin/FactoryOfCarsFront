@@ -13,6 +13,7 @@ import { EnginesService } from '../services/engines.service';
 import { PaintsService } from '../services/paint.service';
 import { TiresService } from '../services/tires.service';
 import { TransmissionService } from '../services/transmissions.service';
+import { OrdersService } from '../services/orders.service';
 
 export interface Material {
   material: string;
@@ -40,7 +41,8 @@ export class NewFormComponent implements OnInit {
               public enginesService: EnginesService,
               public paintService: PaintsService,
               public tiresService: TiresService,
-              public transmissionsService: TransmissionService) {
+              public transmissionsService: TransmissionService,
+              public ordersService: OrdersService) {
                 modelService.getAll().subscribe(models => {
                   this.models = models;
                 });
@@ -105,13 +107,13 @@ export class NewFormComponent implements OnInit {
   }
 
   submit(){
-    if (this.form.controls.paint.value === 'red'){
-      const orderMaterials = this.dialog.open(OrderMaterialsComponent, {
-        width: '450px',
-        data: {name: 'paint',
-              material: this.form.controls.paint.value}
-      });
-    }
+    this.order = new Order();
+    this.order.modelId = this.form.get('model').value;
+    this.order.transmissionId = this.form.get('transmission').value;
+    this.order.paintId = this.form.get('paint').value;
+    this.order.tiresId = this.form.get('tire').value;
+    this.order.engineId = this.form.get('engine').value;
+    this.ordersService.post(this.order).subscribe();
   }
 }
 
