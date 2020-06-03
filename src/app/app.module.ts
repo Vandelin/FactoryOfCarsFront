@@ -15,6 +15,8 @@ import { Transmission } from './models/transmission';
 import { Order } from './models/order';
 import { Paint } from './models/paint';
 import { Engines } from './models/engines';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { Engines } from './models/engines';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    HttpModule
   ],
   providers: [],
   entryComponents: [OrderMaterialsComponent],

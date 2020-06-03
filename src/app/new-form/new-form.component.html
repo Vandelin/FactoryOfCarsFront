@@ -6,40 +6,39 @@
                 <mat-form-field>
                     <mat-label>Select car model</mat-label>
                     <mat-select formControlName="model">
-                        <mat-option value="volvo">Volvo</mat-option>
-                    </mat-select>
+                        <mat-option *ngFor="let model of models" [value]="model.id"> {{ model.name }}</mat-option>
+                    </mat-select >
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field>
                     <mat-label>Select engines</mat-label>
                     <mat-select formControlName="engine">
-                        <mat-option value="1.6_FSI_116km">1.6 FSI 116km</mat-option>
-                    </mat-select>
+                        <mat-option *ngFor="let engine of engines" [value]="engine.id"> {{ engine.name }} {{ engine.power }}km</mat-option>
+                    </mat-select >
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field>
                     <mat-label>Select transmision</mat-label>
-                    <mat-select formControlName="transition">
-                        <mat-option value="opel_a_6">Opel automatic - 6 gears</mat-option>
-                    </mat-select>
+                    <mat-select formControlName="transmission">
+                        <mat-option *ngFor="let transmission of transmissions" [value]="transmission.id"> {{ transmission.name }} {{transmission.gears}} gears</mat-option>
+                    </mat-select >
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field>
                     <mat-label>Select tires</mat-label>
-                    <mat-select formControlName="tires">
-                        <mat-option value="michealin">Michealin</mat-option>
+                    <mat-select formControlName="tire">
+                        <mat-option *ngFor="let tire of tires" [value]="tire.id"> {{ tire.manufacturer }} {{ tire.size }}"</mat-option>
                     </mat-select>
-                </mat-form-field>
+                </mat-form-field>   
             </p>
             <p>
                 <mat-form-field>
                     <mat-label>Select paints</mat-label>
                     <mat-select formControlName="paint">
-                        <mat-option value="blue">Blue</mat-option>
-                        <mat-option value="red">Red</mat-option>
+                        <mat-option *ngFor="let paint of paints" [value]="paint.id"> {{ paint.color }}</mat-option>
                     </mat-select>
                 </mat-form-field>
 

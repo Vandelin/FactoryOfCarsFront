@@ -8,6 +8,11 @@ import { Order } from '../models/order';
 import { Paint } from '../models/paint';
 import { Transmission } from '../models/transmission';
 import { Tires } from '../models/tires';
+import { ModelsService } from '../services/models.service';
+import { EnginesService } from '../services/engines.service';
+import { PaintsService } from '../services/paint.service';
+import { TiresService } from '../services/tires.service';
+import { TransmissionService } from '../services/transmissions.service';
 
 export interface Material {
   material: string;
@@ -22,31 +27,82 @@ export interface Material {
 })
 export class NewFormComponent implements OnInit {
 
-  model: Models;
-  engines: Engines;
+  models: Models[];
+  engines: Engines[];
   order: Order;
-  paint: Paint;
-  transmission: Transmission;
-  tires: Tires;
+  paints: Paint[];
+  transmissions: Transmission[];
+  tires: Tires[];
   price = 0;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,
+              public modelService: ModelsService,
+              public enginesService: EnginesService,
+              public paintService: PaintsService,
+              public tiresService: TiresService,
+              public transmissionsService: TransmissionService) {
+                modelService.getAll().subscribe(models => {
+                  this.models = models;
+                });
+                enginesService.getAll().subscribe(engines => {
+                  this.engines = engines;
+                });
+                paintService.getAll().subscribe(paints => {
+                  this.paints = paints;
+                  console.log(paints);
+                });
+                tiresService.getAll().subscribe(tires => {
+                  this.tires = tires;
+                });
+                transmissionsService.getAll().subscribe(transmissions => {
+                  this.transmissions = transmissions;
+                });
+                this.form.valueChanges.subscribe(order => {
+                  this.getPriceByOrder(order);
+                });
+              }
 
 
   form: FormGroup = new FormGroup({
     model: new FormControl(),
     engine: new FormControl(),
-    transition: new FormControl(),
+    transmission: new FormControl(),
     paint: new FormControl(),
-    tires: new FormControl()
+    tire: new FormControl(),
+    price: new FormControl()
   });
 
   ngOnInit(): void {
-    this.form.get('model').valueChanges.subscribe(val => {
-      this.price += 1;
-    });
   }
 
+  getPriceByOrder(order){
+    this.price = 0;
+    if (order.model != null){
+      this.price += this.models.find(model => {
+        return model.id === order.model;
+      }).price;
+    }
+    if (order.engine != null){
+      this.price += this.engines.find(engine => {
+        return engine.id === order.engine;
+      }).price;
+    }
+    if (order.tire != null){
+      this.price += this.tires.find(tire => {
+        return tire.id === order.tire;
+      }).price;
+    }
+    if (order.transmission != null){
+      this.price += this.transmissions.find(transmission => {
+        return transmission.id === order.transmission;
+      }).price;
+    }
+    if (order.paint != null){
+      this.price += this.paints.find(paint => {
+        return paint.id === order.paint;
+      }).price;
+    }
+  }
 
   submit(){
     if (this.form.controls.paint.value === 'red'){

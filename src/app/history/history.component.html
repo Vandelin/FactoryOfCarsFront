@@ -24,19 +24,24 @@
             <mat-cell *matCellDef="let element"> {{element.paint}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Time">
-        <mat-header-cell *matHeaderCellDef> Time Elapsed </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="Price">
         <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="Time">
+        <mat-header-cell *matHeaderCellDef> Time Elapsed </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.time}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="Operations">
         <mat-header-cell *matHeaderCellDef > Continue operating </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click) = "continue()">Continue</button> </mat-cell>
+        <mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click) = "submit()">Submit</button> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
