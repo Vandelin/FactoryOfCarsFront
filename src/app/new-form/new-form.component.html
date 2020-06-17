@@ -6,7 +6,7 @@
                 <mat-form-field>
                     <mat-label>Select car model</mat-label>
                     <mat-select formControlName="model">
-                        <mat-option *ngFor="let model of models" [value]="model.id"> {{ model.name }}</mat-option>
+                        <mat-option *ngFor="let model of models" [value]="model.id"> {{ model.name }} </mat-option>
                     </mat-select >
                 </mat-form-field>
             </p>
@@ -14,7 +14,7 @@
                 <mat-form-field>
                     <mat-label>Select engines</mat-label>
                     <mat-select formControlName="engine">
-                        <mat-option *ngFor="let engine of engines" [value]="engine.id"> {{ engine.name }} {{ engine.power }}km</mat-option>
+                        <mat-option *ngFor="let engine of engines" [value]="engine.id"> {{ engine.name }} {{ engine.power }}km - {{engine.inStock | yesNo}}</mat-option>
                     </mat-select >
                 </mat-form-field>
             </p>
@@ -22,7 +22,7 @@
                 <mat-form-field>
                     <mat-label>Select transmision</mat-label>
                     <mat-select formControlName="transmission">
-                        <mat-option *ngFor="let transmission of transmissions" [value]="transmission.id"> {{ transmission.name }} {{transmission.gears}} gears</mat-option>
+                        <mat-option *ngFor="let transmission of transmissions" [value]="transmission.id"> {{ transmission.name }} {{transmission.gears}} gears - {{transmission.inStock | yesNo}}</mat-option>
                     </mat-select >
                 </mat-form-field>
             </p>
@@ -30,7 +30,7 @@
                 <mat-form-field>
                     <mat-label>Select tires</mat-label>
                     <mat-select formControlName="tire">
-                        <mat-option *ngFor="let tire of tires" [value]="tire.id"> {{ tire.manufacturer }} {{ tire.size }}"</mat-option>
+                        <mat-option *ngFor="let tire of tires" [value]="tire.id"> {{ tire.manufacturer }} {{ tire.size }}" - {{tire.inStock | yesNo}}</mat-option>
                     </mat-select>
                 </mat-form-field>   
             </p>
@@ -38,11 +38,17 @@
                 <mat-form-field>
                     <mat-label>Select paints</mat-label>
                     <mat-select formControlName="paint">
-                        <mat-option *ngFor="let paint of paints" [value]="paint.id"> {{ paint.color }}</mat-option>
+                        <mat-option *ngFor="let paint of paints" [value]="paint.id"> {{ paint.color }} - {{paint.inStock | yesNo}}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-label> Price: {{price}}</mat-label>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput formControlName="email"
+                    placeholder="Ex. pat@example.com">
+                </mat-form-field>
             </p>
             <p class="button">
                 <button type="submit" mat-button>Submit</button>

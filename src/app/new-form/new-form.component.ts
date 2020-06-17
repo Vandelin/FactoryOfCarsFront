@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, Inject, Pipe, PipeTransform } from '@angular/core';
+import { FormGroup, FormControl, EmailValidator } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Models } from '../models/models';
@@ -51,7 +51,6 @@ export class NewFormComponent implements OnInit {
                 });
                 paintService.getAll().subscribe(paints => {
                   this.paints = paints;
-                  console.log(paints);
                 });
                 tiresService.getAll().subscribe(tires => {
                   this.tires = tires;
@@ -71,7 +70,8 @@ export class NewFormComponent implements OnInit {
     transmission: new FormControl(),
     paint: new FormControl(),
     tire: new FormControl(),
-    price: new FormControl()
+    price: new FormControl(),
+    email: new FormControl()
   });
 
   ngOnInit(): void {
@@ -113,6 +113,7 @@ export class NewFormComponent implements OnInit {
     this.order.paintId = this.form.get('paint').value;
     this.order.tiresId = this.form.get('tire').value;
     this.order.engineId = this.form.get('engine').value;
+    this.order.email = this.form.get('email').value;
     this.ordersService.post(this.order).subscribe();
   }
 }
@@ -136,4 +137,11 @@ export class OrderMaterialsComponent {
     this.dialogRef.close();
   }
 
+}
+
+@Pipe({ name: 'yesNo' })
+export class YesNoPipe implements PipeTransform {
+  transform(value: any, ...args: any[]): any {
+    return value ? 'Dostępny' : 'Nie Dostępny';
+  }
 }

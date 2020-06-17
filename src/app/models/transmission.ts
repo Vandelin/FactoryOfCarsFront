@@ -4,4 +4,5 @@ export class Transmission{
     automatic: boolean;
     gears: number;
     price: number;
+    inStock: boolean;
 }

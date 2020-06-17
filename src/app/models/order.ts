@@ -4,4 +4,5 @@ export class Order{
     transmissionId: number;
     tiresId: number;
     paintId: number;
+    email: string;
 }

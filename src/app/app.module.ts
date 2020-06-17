@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule } from './material.module';
-import { NewFormComponent, OrderMaterialsComponent } from './new-form/new-form.component';
+import { NewFormComponent, OrderMaterialsComponent, YesNoPipe } from './new-form/new-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistoryComponent } from './history/history.component';
 import { Models } from './models/models';
@@ -24,7 +24,8 @@ import { HttpModule } from '@angular/http';
     NavbarComponent,
     NewFormComponent,
     OrderMaterialsComponent,
-    HistoryComponent
+    HistoryComponent,
+    YesNoPipe
   ],
   imports: [
     BrowserModule,

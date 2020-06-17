@@ -4,4 +4,5 @@ export class Engines{
     capacity: number;
     power: number;
     price: number;
+    inStock: boolean;
 }

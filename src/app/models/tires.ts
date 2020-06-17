@@ -3,4 +3,5 @@ export class Tires{
     manufacturer: string;
     size: number;
     price: number;
+    inStock: boolean;
 }
