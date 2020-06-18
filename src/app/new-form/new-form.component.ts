@@ -35,6 +35,7 @@ export class NewFormComponent implements OnInit {
   transmissions: Transmission[];
   tires: Tires[];
   price = 0;
+  checked = false;
 
   constructor(public dialog: MatDialog,
               public modelService: ModelsService,
@@ -71,7 +72,8 @@ export class NewFormComponent implements OnInit {
     paint: new FormControl(),
     tire: new FormControl(),
     price: new FormControl(),
-    email: new FormControl()
+    email: new FormControl(),
+    mountedParts: new FormControl()
   });
 
   ngOnInit(): void {
@@ -114,6 +116,8 @@ export class NewFormComponent implements OnInit {
     this.order.tiresId = this.form.get('tire').value;
     this.order.engineId = this.form.get('engine').value;
     this.order.email = this.form.get('email').value;
+    this.order.mountParts = this.form.get('mountedParts').value;
+    console.log(this.order.mountParts);
     this.ordersService.post(this.order).subscribe();
   }
 }

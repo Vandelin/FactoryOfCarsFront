@@ -50,6 +50,15 @@
                     placeholder="Ex. pat@example.com">
                 </mat-form-field>
             </p>
+            <p>
+                <mat-form-field>
+                <mat-label>Mounted properly</mat-label>
+                <mat-select formControlName="mountedParts">
+                    <mat-option value=true>Yes</mat-option>
+                    <mat-option value=false>No</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </p>
             <p class="button">
                 <button type="submit" mat-button>Submit</button>
             </p>

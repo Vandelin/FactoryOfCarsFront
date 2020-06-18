@@ -5,4 +5,5 @@ export class Order{
     tiresId: number;
     paintId: number;
     email: string;
+    mountParts: boolean;
 }
